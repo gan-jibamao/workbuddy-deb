@@ -1,0 +1,10 @@
+#!/bin/sh
+# WorkBuddy 8318 网关启动器
+# 解释器用 /var/jb 稳定软链（Dopamine 自动解析到 .jbroot），
+# 绝不硬编码设备专属随机哈希，保证跨设备可用。
+for PY in /var/jb/usr/bin/python3 /usr/bin/python3 /var/jb/usr/local/bin/python3; do
+    if [ -x "$PY" ]; then
+        exec "$PY" /var/jb/usr/share/workbuddy/wb_server.py
+    fi
+done
+exec python3 /var/jb/usr/share/workbuddy/wb_server.py

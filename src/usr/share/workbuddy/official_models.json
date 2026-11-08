@@ -1,0 +1,272 @@
+[
+  {
+    "id": "auto",
+    "name": "Auto",
+    "credits": "1.0x",
+    "description": "平衡效果与速度。自动为每个任务匹配最优模型，积分倍率随之浮动",
+    "maxInputTokens": 256000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "hy3",
+    "name": "Hy3",
+    "credits": "x0.00 credits",
+    "description": "混元思考模型，具有增强的推理能力",
+    "maxInputTokens": 192000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "hy3-x",
+    "name": "Hy3",
+    "credits": "x0.05",
+    "description": "混元思考模型，具有增强的推理能力",
+    "maxInputTokens": 192000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "hy4-preview",
+    "name": "Hy4 preview",
+    "credits": "x0.29",
+    "description": "混元思考模型，具有增强的推理能力",
+    "maxInputTokens": 1000000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "hy4-preview-x",
+    "name": "Hy4 preview",
+    "credits": "x0.29",
+    "description": "混元思考模型，具有增强的推理能力",
+    "maxInputTokens": 1000000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "default",
+    "name": "Default",
+    "credits": "x2.20 credits",
+    "description": "高性能大模型",
+    "maxInputTokens": 200000,
+    "supportsReasoning": false,
+    "supportsImages": false
+  },
+  {
+    "id": "glm-5v-turbo",
+    "name": "GLM-5v-Turbo",
+    "credits": "x0.71 credits",
+    "description": "原生多模态模型",
+    "maxInputTokens": 200000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "glm-5.3",
+    "name": "GLM-5.3",
+    "credits": "x0.79",
+    "description": "旗舰模型，擅长复杂软件工程与长程 Agent 任务",
+    "maxInputTokens": 1000000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "glm-5.3-flash",
+    "name": "GLM-5.3-Flash",
+    "credits": "x0.06",
+    "description": "原生多模态模型，擅长视觉理解与专业任务",
+    "maxInputTokens": 1000000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "glm-5.2",
+    "name": "GLM-5.2",
+    "credits": "x0.79 credits",
+    "description": "1M 上下文，擅长长程任务",
+    "maxInputTokens": 1000000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "glm-5.1",
+    "name": "GLM-5.1",
+    "credits": "x0.79 credits",
+    "description": "能力均衡，适合日常使用",
+    "maxInputTokens": 200000,
+    "supportsReasoning": true,
+    "supportsImages": false
+  },
+  {
+    "id": "glm-5.0",
+    "name": "GLM-5.0",
+    "credits": "x0.80 credits",
+    "description": "高性能大模型",
+    "maxInputTokens": 200000,
+    "supportsReasoning": true,
+    "supportsImages": false
+  },
+  {
+    "id": "glm-4.7",
+    "name": "GLM-4.7",
+    "credits": "x0.23 credits",
+    "description": "高性能大模型",
+    "maxInputTokens": 200000,
+    "supportsReasoning": true,
+    "supportsImages": false
+  },
+  {
+    "id": "glm-4.6",
+    "name": "GLM-4.6",
+    "credits": "x0.23 credits",
+    "description": "高性能大模型",
+    "maxInputTokens": 168000,
+    "supportsReasoning": true,
+    "supportsImages": false
+  },
+  {
+    "id": "glm-4.6v",
+    "name": "GLM-4.6V",
+    "credits": "x0.11 credits",
+    "description": "高性能大模型",
+    "maxInputTokens": 128000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "minimax-m3",
+    "name": "MiniMax-M3",
+    "credits": "x0.25 credits",
+    "description": "原生多模态，擅长代码、智能体任务",
+    "maxInputTokens": 512000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "minimax-m2.5",
+    "name": "MiniMax-M2.5",
+    "credits": "x0.18 credits",
+    "description": "高性能大模型",
+    "maxInputTokens": 200000,
+    "supportsReasoning": true,
+    "supportsImages": false
+  },
+  {
+    "id": "kimi-k3-1",
+    "name": "Kimi-K3",
+    "credits": "x1.62 credits",
+    "description": "擅长处理复杂的长程自主任务，前端开发能力突出，同时在知识工作与科研推理上表现出色。",
+    "maxInputTokens": 1000000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "kimi-k2.8-preview",
+    "name": "Kimi-K2.8-Preview",
+    "credits": "x0.77 credits",
+    "description": "擅长处理复杂的长程自主任务，前端开发能力突出，同时在知识工作与科研推理上表现出色。",
+    "maxInputTokens": 1000000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "kimi-k2.7",
+    "name": "Kimi-K2.7-Code",
+    "credits": "x0.57 credits",
+    "description": "多模态模型，适合日常任务",
+    "maxInputTokens": 256000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "kimi-k2.6",
+    "name": "Kimi-K2.6",
+    "credits": "x0.52 credits",
+    "description": "多模态模型，适合日常任务",
+    "maxInputTokens": 256000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "kimi-k2.5",
+    "name": "Kimi-K2.5",
+    "credits": "x0.45 credits",
+    "description": "高性能大模型",
+    "maxInputTokens": 164000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "kimi-k2-thinking",
+    "name": "Kimi-K2-Thinking",
+    "credits": "x0.54 credits",
+    "description": "高性能大模型",
+    "maxInputTokens": 164000,
+    "supportsReasoning": true,
+    "supportsImages": false
+  },
+  {
+    "id": "deepseek-v4-flash",
+    "name": "Deepseek-V4-Flash",
+    "credits": "x0.17 credits",
+    "description": "DeepSeek 旗舰模型，支持 1M 上下文窗口",
+    "maxInputTokens": 1000000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "deepseek-v4.1-flash",
+    "name": "Deepseek-V4.1-Flash",
+    "credits": "x0.03 credits",
+    "description": "DeepSeek 旗舰模型，支持 1M 上下文窗口，原生多模态",
+    "maxInputTokens": 1000000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "deepseek-v4-pro",
+    "name": "Deepseek-V4-Pro",
+    "credits": "x0.51 credits",
+    "description": "DeepSeek 旗舰模型，支持 1M 上下文窗口",
+    "maxInputTokens": 1000000,
+    "supportsReasoning": true,
+    "supportsImages": true
+  },
+  {
+    "id": "deepseek-v3-2-volc",
+    "name": "DeepSeek-V3.2",
+    "credits": "x0.29 credits",
+    "description": "高性能大模型",
+    "maxInputTokens": 96000,
+    "supportsReasoning": true,
+    "supportsImages": false
+  },
+  {
+    "id": "hunyuan-2.0-thinking",
+    "name": "Hunyuan-2.0-Thinking",
+    "credits": "x0.04 credits",
+    "description": "高性能大模型",
+    "maxInputTokens": 128000,
+    "supportsReasoning": true,
+    "supportsImages": false
+  },
+  {
+    "id": "hunyuan-chat",
+    "name": "Hunyuan-Turbos",
+    "credits": "1.0x",
+    "description": "高性能大模型",
+    "maxInputTokens": 200000,
+    "supportsReasoning": false,
+    "supportsImages": false
+  },
+  {
+    "id": "hunyuan-image-v3.0",
+    "name": "Hunyuan Image V3",
+    "credits": "1.0x",
+    "description": "高性能大模型",
+    "maxInputTokens": 128000,
+    "supportsReasoning": false,
+    "supportsImages": false
+  }
+]

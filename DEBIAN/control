@@ -1,0 +1,14 @@
+Package: com.jkgl.workbuddy
+Name: WorkBuddy 反代管家
+Version: 1.5.7
+Architecture: iphoneos-arm64e
+Section: 插件配置
+Depends: firmware (>= 14.0), python3
+Maintainer: JK
+Author: JK
+Description: WorkBuddy 多账号反向代理网关（8318）。
+ 提供 OpenAI 兼容接口 + 网页管理面板（PWA 可添加到桌面）。
+ 兼容 Dopamine rootless 与 RootHide 隐根（通用包）。
+ 打开 http://127.0.0.1:8318/ 即为管理面板。
+ 凭据文件 wb_tokens.json 不随包分发，请在面板「控制 → 凭据导入」粘贴导入。
+Installed-Size: 1488

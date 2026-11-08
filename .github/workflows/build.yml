@@ -1,0 +1,74 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: 单测 + 后端集成验收
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 归一化单测（7 种输入形态）
+        run: python3 tests/test_normalize.py
+
+      - name: 后端集成验收（真起服务 + 假上游）
+        run: python3 tests/test_backend.py
+
+  deb:
+    name: 打包 .deb
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 ar/xz
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends binutils xz-utils
+
+      - name: 构建 deb
+        run: bash build_deb.sh
+
+      - name: 校验包结构
+        run: |
+          set -e
+          DEB=$(ls dist/*.deb)
+          echo "包: $DEB"
+          ar t "$DEB"
+          mkdir -p /tmp/verify && cd /tmp/verify
+          ar x "$OLDPWD/$DEB"
+          echo '--- data 文件清单 ---'
+          tar tJf data.tar.xz
+          echo '--- control 内容 ---'
+          tar xJf control.tar.xz ./control -O
+          echo '--- wb_server.py 语法复检 ---'
+          tar xJf data.tar.xz ./usr/share/workbuddy/wb_server.py
+          python3 -c "import ast; ast.parse(open('usr/share/workbuddy/wb_server.py',encoding='utf-8').read()); print('OK')"
+          echo '--- 两份 HTML 一致性 ---'
+          tar xJf data.tar.xz ./usr/share/workbuddy/index.html ./usr/share/workbuddy/panel/index.html
+          cmp usr/share/workbuddy/index.html usr/share/workbuddy/panel/index.html && echo 'OK'
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: workbuddy-deb
+          path: dist/*.deb
+          if-no-files-found: error
+
+      - name: 发布 Release（仅 tag）
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.deb
+          generate_release_notes: true

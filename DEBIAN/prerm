@@ -1,0 +1,7 @@
+#!/bin/bash
+LABEL="com.jkgl.workbuddy"
+LAUNCHCTL="/var/jb/bin/launchctl"
+[ -x "$LAUNCHCTL" ] || LAUNCHCTL="launchctl"
+"$LAUNCHCTL" bootout system/${LABEL} 2>/dev/null
+echo "WorkBuddy 守护进程已停止"
+exit 0

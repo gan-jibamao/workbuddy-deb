@@ -1,0 +1,46 @@
+#!/bin/bash
+# WorkBuddy 8318 安装后处理
+LABEL="com.jkgl.workbuddy"
+PLIST="/var/jb/Library/LaunchDaemons/${LABEL}.plist"
+[ -f "$PLIST" ] || PLIST="/Library/LaunchDaemons/${LABEL}.plist"
+DATA="/var/jb/usr/share/workbuddy"
+[ -d "$DATA" ] || DATA="/usr/share/workbuddy"
+
+echo "WorkBuddy 反代管家 - 正在部署..."
+
+# 1. 数据/日志目录（物理路径，豁免 rootless 前缀）
+mkdir -p /var/workbuddy
+chmod 755 /var/workbuddy
+
+# 2. 权限
+chmod 755 "${DATA}/wbstart" 2>/dev/null
+chmod 644 "${DATA}/wb_server.py" "${DATA}/index.html" "${DATA}/manifest.json" \
+          "${DATA}/apple-touch-icon.png" "${DATA}/favicon.ico" 2>/dev/null
+chmod 644 "${DATA}/panel/index.html" 2>/dev/null
+
+# 3. 自愈：解释器路径探测（rootless / RootHide 通用）
+#    plist 里写的是 /var/jb/bin/sh；若该路径不可用则回退 /bin/sh
+SHPATH="/var/jb/bin/sh"
+[ -x "$SHPATH" ] || SHPATH="/bin/sh"
+if command -v /usr/libexec/PlistBuddy >/dev/null 2>&1; then
+  /usr/libexec/PlistBuddy -c "Set :ProgramArguments:0 ${SHPATH}" "$PLIST" 2>/dev/null && \
+    echo "✅ 解释器已确认为 ${SHPATH}"
+fi
+chmod 644 "$PLIST" 2>/dev/null
+
+# 4. 拉起守护进程
+LAUNCHCTL="/var/jb/bin/launchctl"
+[ -x "$LAUNCHCTL" ] || LAUNCHCTL="launchctl"
+"$LAUNCHCTL" bootout system/${LABEL} 2>/dev/null
+sleep 1
+"$LAUNCHCTL" bootstrap system "${PLIST}" 2>/dev/null \
+  && "$LAUNCHCTL" kickstart -k system/${LABEL} 2>/dev/null \
+  && echo "✅ 守护进程已拉起 (${LABEL})" \
+  || echo "⚠️ 自动拉起失败，请重启设备或手动: launchctl bootstrap system ${PLIST}"
+
+echo "---------------------------"
+echo " WorkBuddy 安装完成"
+echo " 管理面板: http://127.0.0.1:8318/panel"
+echo " 凭据导入: 面板 → 控制 → 凭据导入（粘贴 JSON）"
+echo "---------------------------"
+exit 0
